@@ -13,15 +13,21 @@ Vue.createApp({
                 this.rotateX = 0,
                 this.rotateY = 0,
                 this.rotateZ = 0
+        },
+        async copy() {
+            let text = `transform:${this.box.transform};`
+            await navigator.clipboard.writeText(text);
+
+            alert("CSS Copied to clipbaord")
         }
     },
     computed: {
         box() {
             return {
-                trasform: `perspective(${this.perspective}px)
-                rotateX(${this.rotateX}px)
-                rotateY(${this.rotateX}px)
-                rotateZ(${this.rotateZ}px)`
+                transform: `perspective(${this.perspective}px)
+                rotateX(${this.rotateX}deg)
+                rotateY(${this.rotateY}deg)
+                rotateZ(${this.rotateZ}deg)`
             }
         }
     }
